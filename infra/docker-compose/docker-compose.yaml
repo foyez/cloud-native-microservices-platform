@@ -1,0 +1,43 @@
+services:
+  postgresql:
+    image: postgres:16-alpine
+    container_name: postgresql
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: testpass
+      POSTGRES_DB: eks_micro
+    volumes:
+      - postgresql_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  user-service:
+    build:
+      context: ../../microservices/user-service
+      # target: prod # Use the prod stage
+    container_name: user-service
+    ports:
+      - "8080:8080"
+    environment:
+      - SERVICE=user
+      - DB_HOST=postgresql
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASSWORD=testpass
+      - DB_NAME=eks_micro
+      - SSLMODE=disable
+      - PORT=8080
+      - JWT_SECRET=your_jwt_secret_here
+      
+    depends_on:
+      postgresql:
+        condition: service_healthy
+
+volumes:
+  postgresql_data:
+  rabbitmq_data:
