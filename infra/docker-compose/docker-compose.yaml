@@ -1,4 +1,17 @@
 services:
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
   postgresql:
     image: postgres:16-alpine
     container_name: postgresql
@@ -38,6 +51,30 @@ services:
       postgresql:
         condition: service_healthy
 
+  product-service:
+      build:
+        context: ../../microservices/product-service
+      container_name: product-service
+      ports:
+        - "8081:8081"
+      environment:
+        - SERVICE=product
+        - DB_HOST=postgresql
+        - DB_PORT=5432
+        - DB_USER=postgres
+        - DB_PASSWORD=testpass
+        - DB_NAME=eks_micro
+        - SSLMODE=disable
+        - REDIS_HOST=redis
+        - REDIS_PORT=6379
+        - PORT=8081
+      depends_on:
+        postgresql:
+          condition: service_healthy
+        redis:
+          condition: service_healthy
+
 volumes:
   postgresql_data:
   rabbitmq_data:
+  redis_data:

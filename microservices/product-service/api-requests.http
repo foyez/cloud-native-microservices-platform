@@ -1,0 +1,32 @@
+### Health Check
+GET http://localhost:8081/health
+
+### Create Product
+POST http://localhost:8081/api/api/products
+Content-Type: application/json
+
+{
+  "name": "Sample Product",
+  "description": "A test product",
+  "price": 19.99,
+  "stock": 100,
+  "category": "test"
+}
+
+### Get All Products
+GET http://localhost:8081/api/api/products
+
+### Get Product by ID
+GET http://localhost:8081/api/api/products/1
+
+### Update Product
+PATCH http://localhost:8081/api/api/products/1
+Content-Type: application/json
+
+{
+  "name": "Updated Product",
+  "price": 24.99
+}
+
+### Delete Product
+DELETE http://localhost:8081/api/api/products/1
