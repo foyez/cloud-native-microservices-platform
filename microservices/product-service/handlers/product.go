@@ -146,7 +146,7 @@ func (h *ProductHandler) UpdateProduct(ctx *gin.Context) {
 
 	// Build dynamic update query
 	query := "UPDATE products SET updated_at = $1"
-	args := []interface{}{time.Now()}
+	args := []any{time.Now()}
 	argPos := 2
 
 	if req.Name != nil {

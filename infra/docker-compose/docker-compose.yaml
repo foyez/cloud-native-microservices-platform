@@ -98,6 +98,22 @@ services:
         redis:
           condition: service_healthy
 
+  api-gateway:
+    build:
+      context: ../../microservices/api-gateway
+    container_name: api-gateway
+    ports:
+      - "8000:8000"
+    environment:
+      - USER_SERVICE_URL=http://user-service:8080
+      - PRODUCT_SERVICE_URL=http://product-service:8081
+      - ORDER_SERVICE_URL=http://order-service:8082
+      - JWT_SECRET=your_jwt_secret_here
+    depends_on:
+      - user-service
+      - product-service
+      - order-service
+
 volumes:
   postgresql_data:
   rabbitmq_data:

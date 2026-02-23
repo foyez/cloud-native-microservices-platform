@@ -1,0 +1,90 @@
+@baseUrl = http://localhost:8000
+@apiV1 = {{baseUrl}}/api/v1
+
+### User Registration
+# @name auth
+POST {{apiV1}}/users
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "email": "testuser@example.com",
+  "password": "password123"
+}
+
+### User Login
+# @name auth
+POST {{apiV1}}/users/login
+Content-Type: application/json
+
+{
+  "email": "testuser@example.com",
+  "password": "password123"
+}
+
+### Get User (Protected)
+GET {{apiV1}}/users/1
+Authorization: Bearer {{auth.response.body.token}}
+
+### Get All Products
+GET {{apiV1}}/products
+
+### Get Product by ID
+GET {{apiV1}}/products/1
+
+### Create Product (Protected)
+POST {{apiV1}}/products
+Authorization: Bearer {{auth.response.body.token}}
+Content-Type: application/json
+
+{
+  "name": "Sample Product",
+  "description": "A test product",
+  "price": 19.99,
+  "stock": 100,
+  "category": "test"
+}
+
+### Update Product (Protected)
+PUT {{apiV1}}/products/1
+Authorization: Bearer {{auth.response.body.token}}
+Content-Type: application/json
+
+{
+  "name": "Updated Product",
+  "price": 24.99
+}
+
+### Delete Product (Protected)
+DELETE {{apiV1}}/products/1
+Authorization: Bearer {{auth.response.body.token}}
+
+### Create Order (Protected)
+POST {{apiV1}}/orders
+Authorization: Bearer {{auth.response.body.token}}
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "items": [
+    { "productId": 1, "quantity": 2 },
+    { "productId": 2, "quantity": 1 }
+  ]
+}
+
+### Get All Orders for a User (Protected)
+GET {{apiV1}}/users/1/orders
+Authorization: Bearer {{auth.response.body.token}}
+
+### Get Order by ID (Protected)
+GET {{apiV1}}/orders/1
+Authorization: Bearer {{auth.response.body.token}}
+
+### Update Order Status (Protected)
+PATCH {{apiV1}}/orders/1/status
+Authorization: Bearer {{auth.response.body.token}}
+Content-Type: application/json
+
+{
+  "status": "shipped"
+}

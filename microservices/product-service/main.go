@@ -99,7 +99,7 @@ func main() {
 		v1API.POST("/products", productHandler.CreateProduct)
 		v1API.GET("/products", productHandler.GetProducts)
 		v1API.GET("/products/:id", productHandler.GetProduct)
-		v1API.PATCH("/products/:id", productHandler.UpdateProduct)
+		v1API.PUT("/products/:id", productHandler.UpdateProduct)
 		v1API.DELETE("/products/:id", productHandler.DeleteProduct)
 	}
 
