@@ -74,6 +74,30 @@ services:
         redis:
           condition: service_healthy
 
+  order-service:
+      build:
+        context: ../../microservices/order-service
+      container_name: order-service
+      ports:
+        - "8082:8082"
+      environment:
+        - SERVICE=order
+        - DB_HOST=postgresql
+        - DB_PORT=5432
+        - DB_USER=postgres
+        - DB_PASSWORD=testpass
+        - DB_NAME=eks_micro
+        - SSLMODE=disable
+        - REDIS_HOST=redis
+        - REDIS_PORT=6379
+        - PORT=8082
+        - PRODUCT_SERVICE_URL=http://product-service:8081
+      depends_on:
+        postgresql:
+          condition: service_healthy
+        redis:
+          condition: service_healthy
+
 volumes:
   postgresql_data:
   rabbitmq_data:

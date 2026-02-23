@@ -1,0 +1,28 @@
+### Health Check
+GET http://localhost:8082/health
+
+### Create Order
+POST http://localhost:8082/api/v1/orders
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "items": [
+    { "productId": 1, "quantity": 2 },
+    { "productId": 2, "quantity": 1 }
+  ]
+}
+
+### Get All Orders for a User
+GET http://localhost:8082/api/v1/orders/users/1
+
+### Get Order by ID
+GET http://localhost:8082/api/v1/orders/1
+
+### Update Order Status
+PATCH http://localhost:8082/api/v1/orders/1/status
+Content-Type: application/json
+
+{
+  "status": "shipped"
+}

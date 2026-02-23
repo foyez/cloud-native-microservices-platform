@@ -2,7 +2,7 @@
 GET http://localhost:8081/health
 
 ### Create Product
-POST http://localhost:8081/api/api/products
+POST http://localhost:8081/api/v1/products
 Content-Type: application/json
 
 {
@@ -14,13 +14,13 @@ Content-Type: application/json
 }
 
 ### Get All Products
-GET http://localhost:8081/api/api/products
+GET http://localhost:8081/api/v1/products
 
 ### Get Product by ID
-GET http://localhost:8081/api/api/products/1
+GET http://localhost:8081/api/v1/products/1
 
 ### Update Product
-PATCH http://localhost:8081/api/api/products/1
+PATCH http://localhost:8081/api/v1/products/1
 Content-Type: application/json
 
 {
@@ -29,4 +29,4 @@ Content-Type: application/json
 }
 
 ### Delete Product
-DELETE http://localhost:8081/api/api/products/1
+DELETE http://localhost:8081/api/v1/products/1

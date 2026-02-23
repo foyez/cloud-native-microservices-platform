@@ -94,7 +94,7 @@ func main() {
 	router.GET("/health", productHandler.HealthCheck)
 
 	// API routes
-	v1API := router.Group("/api/api")
+	v1API := router.Group("/api/v1")
 	{
 		v1API.POST("/products", productHandler.CreateProduct)
 		v1API.GET("/products", productHandler.GetProducts)
