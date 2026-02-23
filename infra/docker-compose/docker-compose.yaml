@@ -114,7 +114,16 @@ services:
       - product-service
       - order-service
 
+  frontend:
+    build:
+      context: ../../frontend
+      dockerfile: Dockerfile
+    container_name: frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - api-gateway
+
 volumes:
   postgresql_data:
-  rabbitmq_data:
   redis_data:

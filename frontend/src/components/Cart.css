@@ -1,0 +1,138 @@
+.cart-container {
+  background: white;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.cart-container h2 {
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.cart-empty {
+  text-align: center;
+  padding: 3rem;
+}
+
+.cart-empty h2 {
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.cart-empty p {
+  color: #999;
+  margin-bottom: 2rem;
+}
+
+.cart-items {
+  margin-bottom: 2rem;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+.cart-item:last-child {
+  border-bottom: none;
+}
+
+.cart-item-info h3 {
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.cart-item-price {
+  color: #4caf50;
+  font-weight: 500;
+}
+
+.cart-item-controls {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #f5f5f5;
+  border-radius: 5px;
+  padding: 0.25rem;
+}
+
+.quantity-controls button {
+  background: white;
+  border: 1px solid #ddd;
+  width: 30px;
+  height: 30px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.quantity-controls button:hover:not(:disabled) {
+  background: #667eea;
+  color: white;
+  border-color: #667eea;
+}
+
+.quantity-controls button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.quantity {
+  min-width: 30px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.cart-item-total {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
+  min-width: 100px;
+  text-align: right;
+}
+
+.remove-btn {
+  background: #f44336;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.remove-btn:hover {
+  background: #d32f2f;
+}
+
+.cart-summary {
+  border-top: 2px solid #eee;
+  padding-top: 2rem;
+}
+
+.cart-total {
+  text-align: right;
+  margin-bottom: 1.5rem;
+}
+
+.cart-total h3 {
+  font-size: 1.75rem;
+  color: #333;
+}
+
+.cart-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}

@@ -102,7 +102,7 @@ router.get("/users/:userId", async (req, res) => {
       `SELECT o.id, o.user_id, o.total_amount, o.status, o.created_at, o.updated_at,
               json_agg(json_build_object(
                 'productId', oi.product_id,
-                'productName', oi.product_name,
+                'product_name', oi.product_name,
                 'quantity', oi.quantity,
                 'price', oi.price
               )) as items
@@ -138,7 +138,7 @@ router.get("/:id", async (req, res) => {
       `SELECT o.id, o.user_id, o.total_amount, o.status, o.created_at, o.updated_at,
               json_agg(json_build_object(
                 'productId', oi.product_id,
-                'productName', oi.product_name,
+                'product_name', oi.product_name,
                 'quantity', oi.quantity,
                 'price', oi.price
               )) as items
