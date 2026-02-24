@@ -1,6 +1,7 @@
 package main
 
 import (
+	"crypto/tls"
 	"database/sql"
 	"fmt"
 	"log"
@@ -20,6 +21,8 @@ func main() {
 	dbPassword := os.Getenv("DB_PASSWORD")
 	dbName := os.Getenv("DB_NAME")
 	sslmode := os.Getenv("SSLMODE")
+	redisUsername := os.Getenv("REDIS_USERNAME")
+	redisPassword := os.Getenv("REDIS_PASSWORD")
 	redisHost := os.Getenv("REDIS_HOST")
 	redisPort := os.Getenv("REDIS_PORT")
 	port := os.Getenv("PORT")
@@ -50,9 +53,14 @@ func main() {
 	// Connect to Redis
 	redisClient := redis.NewClient(&redis.Options{
 		Addr:     fmt.Sprintf("%s:%s", redisHost, redisPort),
-		Password: "",
+		Username: redisUsername,
+		Password: redisPassword,
 		DB:       0,
+		TLSConfig: &tls.Config{
+			InsecureSkipVerify: false, // Do not skip verification
+		},
 	})
+	defer redisClient.Close()
 
 	_, err = redisClient.Ping(redisClient.Context()).Result()
 	if err != nil {

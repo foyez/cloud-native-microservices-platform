@@ -36,9 +36,13 @@ dbClient
 
 // Redis connection
 const redisClient = redis.createClient({
+  username: process.env.REDIS_USERNAME,
+  password: process.env.REDIS_PASSWORD,
   socket: {
     host: process.env.REDIS_HOST,
     port: process.env.REDIS_PORT || 6379,
+    tls: true, // Enable TLS
+    rejectUnauthorized: false, // For testing, set to true for production
   },
 });
 

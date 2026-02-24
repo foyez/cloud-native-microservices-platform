@@ -65,6 +65,8 @@ services:
         - DB_PASSWORD=testpass
         - DB_NAME=eks_micro
         - SSLMODE=disable
+        - REDIS_USERNAME=
+        - REDIS_PASSWORD=
         - REDIS_HOST=redis
         - REDIS_PORT=6379
         - PORT=8081
@@ -88,6 +90,8 @@ services:
         - DB_PASSWORD=testpass
         - DB_NAME=eks_micro
         - SSLMODE=disable
+        - REDIS_USERNAME=
+        - REDIS_PASSWORD=
         - REDIS_HOST=redis
         - REDIS_PORT=6379
         - PORT=8082
