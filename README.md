@@ -12,10 +12,10 @@ A full-stack, cloud-native e-commerce platform built with a microservices archit
                         │              │                        │
                         │        API Gateway                    │
                         │         /    |    \                   │
-                        │   User   Product  Order               │
+                        │   Product   User    Order             │
                         │  Service  Service  Service            │
-                        │     │       │  \     │                │
-                        │  PostgreSQL Redis  PostgreSQL         │
+                        │     │   \    │    /                   │
+                        │  Redis   PostgreSQL                   │
                         └───────────────────────────────────────┘
 ```
 
