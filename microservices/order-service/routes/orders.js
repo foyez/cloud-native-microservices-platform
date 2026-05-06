@@ -28,6 +28,7 @@ router.post("/", async (req, res) => {
       // Get product details from product service
       const productResponse = await axios.get(
         `${PRODUCT_SERVICE_URL}/api/v1/products/${item.productId}`,
+        { timeout: 2000 },
       );
 
       const product = productResponse.data;
