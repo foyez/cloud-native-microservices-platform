@@ -1,6 +1,6 @@
-# EKS Microservices App
+# Cloud-Native E-Commerce Microservices Platform
 
-A full-stack, cloud-native e-commerce platform built with a microservices architecture and deployed on AWS EKS (Elastic Kubernetes Service). The project demonstrates containerization, service-to-service communication, caching, API gateway patterns, and infrastructure as code.
+A microservices-based e-commerce application built to explore distributed system design, service-to-service communication, API gateway patterns, caching, and cloud-native deployment on AWS EKS.
 
 ## Architecture
 
